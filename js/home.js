@@ -66,25 +66,36 @@ const createInnerHTML = () => {
         }
         document.querySelector('#display').innerHTML = innerHtml;
     }
-    /*
-    //Section: 2 UC => 5 Ability to Remove a Contact from the address book entries.
-    const remove = (data) => {
-        let bookData = addressBookList.find(personData => personData.id == data.id);
-        if (!bookData)
-            return;
-        const index = addressBookList.map(personData => personData.id).indexOf(bookData.id);
-        addressBookList.splice(index, 1);
+//Section: 3 UC => 5 Ability to Remove a Contact from the address book entries.
+const remove = (data) => {
+    let bookData = addressBookList.find(personData => personData.id == data.id);
+    if (!bookData)
+        return;
+    const index = addressBookList.map(personData => personData.id).indexOf(bookData.id);
+    addressBookList.splice(index, 1);
+    if (site_properties.use_local_storage.match("true")) {
         localStorage.setItem('AddressBookList', JSON.stringify(addressBookList));
-        document.querySelector('.person-count').textContent = addressBookList.length;
         createInnerHTML();
-        alert("Person address has been deleted successfully")
+    } else {
+        const deleteUrl = site_properties.server_url + bookData.id.toString();
+        makeServiceCall("DELETE", deleteUrl, true)
+            .then(responseText => {
+                console.log(responseText)
+                createInnerHTML();
+            })
+            .catch(error => {
+                console.log("Delete Error Status: " + JSON.stringify(error));
+                alert("Error while deleting " + error)
+            })
     }
-    //Section: 3 UC => 4 Updating address book data on JSON server.
+}
+
+//Section: 3 UC => 4 Updating address book data on JSON server.
 const update = (data) => {
     let addBookData = addressBookList.find(personData => personData.id == data.id);
-    if (!addBookData)
+    if (!addBookData) {
         return;
+    }
     localStorage.setItem('edit-person', JSON.stringify(addBookData));
     window.location.replace(site_properties.addPerson);
 }
-*/
