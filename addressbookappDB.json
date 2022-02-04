@@ -1,13 +1,22 @@
 {
   "addressbookappDB": [
     {
-      "_name": "Durgesh",
-      "_phone": "+91-9898989898",
-      "_address": "gygyg",
-      "_city": "Jammu",
-      "_state": "Delhi",
-      "_zipcode": "67899",
+      "_name": "Neeta",
+      "_phone": "+91-8269068794",
+      "_address": "Dayalband",
+      "_city": "Bilaspur",
+      "_state": "Chhattisgarh",
+      "_zipcode": "495001",
       "id": 1
+    },
+    {
+      "_name": "Prakash",
+      "_phone": "+91-9981630033",
+      "_address": "Dayalband",
+      "_city": "Bilaspur",
+      "_state": "Chhattisgarh",
+      "_zipcode": "495001",
+      "id": 2
     }
   ]
 }

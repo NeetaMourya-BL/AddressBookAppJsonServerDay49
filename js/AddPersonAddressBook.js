@@ -90,9 +90,9 @@ function redirect() {
 const setAddressBookObject = () => {
 
     //Here we are directly store values in addressBookObject
-    // if (!isUpdate && site_properties.use_local_storage.match("true")) {
-    //     addressBookObject.id = createNewBookId();
-    // }
+    if (!isUpdate && site_properties.use_local_storage.match("true")) {
+        addressBookObject.id = createNewBookId();
+    }
     addressBookObject._name = getInputValueId('#name');
     addressBookObject._phone = getInputValueId('#phone');
     addressBookObject._address = getInputValueId('#address');
@@ -178,8 +178,3 @@ const setForm = () => {
     setValue('#state', addressBookObject._state);
     setValue('#zipcode', addressBookObject._zipcode);
 }
-
-// const setValue = (id, value) => {
-//     let element = document.querySelector(id);
-//     element.value = value;
-// }
